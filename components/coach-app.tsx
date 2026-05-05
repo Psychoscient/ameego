@@ -5,10 +5,12 @@ import { PRACTICE_PROMPTS } from "@/lib/prompts";
 import type { AnalysisResponse } from "@/lib/types";
 
 const STORAGE_KEY = "ameego-latest-analysis";
+const MICROPHONE_TIMEOUT_MS = 10000;
+type SessionStatus = "idle" | "requesting" | "recording" | "uploading" | "success" | "error";
 
 export function CoachApp() {
   const [selectedPromptId, setSelectedPromptId] = useState(PRACTICE_PROMPTS[0].id);
-  const [status, setStatus] = useState<"idle" | "recording" | "uploading" | "success" | "error">("idle");
+  const [status, setStatus] = useState<SessionStatus>("idle");
   const [seconds, setSeconds] = useState(0);
   const [error, setError] = useState("");
   const [analysis, setAnalysis] = useState<AnalysisResponse | null>(null);
@@ -57,7 +59,8 @@ export function CoachApp() {
     }
 
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      setStatus("requesting");
+      const stream = await requestMicrophoneStream();
       const recorder = new MediaRecorder(stream, pickRecorderOptions());
 
       streamRef.current = stream;
@@ -85,8 +88,10 @@ export function CoachApp() {
         setSeconds((value) => value + 1);
       }, 1000);
     } catch (recordingError) {
-      console.error(recordingError);
-      setError("Microphone access was blocked or unavailable.");
+      if (!(recordingError instanceof DOMException && recordingError.name === "NotAllowedError")) {
+        console.error(recordingError);
+      }
+      setError(microphoneErrorMessage(recordingError));
       setStatus("error");
     }
   }
@@ -146,22 +151,21 @@ export function CoachApp() {
 
   return (
     <main className="shell">
+      <div className="brand-strip" aria-label="Ameego speaking coach">
+        <div className="asset-placeholder logo-placeholder" aria-label="Logo placeholder" />
+        <span className="brand-pill">Filler</span>
+      </div>
       <section className="hero">
         <div className="hero-copy">
           <p className="eyebrow">Formal Speaking Coach</p>
-          <h1>Train your pitch until it sounds inevitable.</h1>
+          <h1>Show me your Quack!</h1>
           <p className="intro">
-            Ameego listens to a short practice run, scores speaking readiness, and turns vague delivery issues into
+            Hi! I am Ameego, your personal speaking coach. I listen to a short practice run, score speaking readiness, and turn vague delivery issues into
             concrete next moves.
           </p>
-          <div className="stat-ribbon">
-            <span>Browser recording</span>
-            <span>Gemini transcription</span>
-            <span>Deterministic scoring</span>
-            <span>Retry loop built for demos</span>
-          </div>
         </div>
         <div className="hero-card">
+          <div className="asset-placeholder sample-placeholder" aria-label="Sample picture placeholder" />
           <div className="card-topline">
             <span>Session mode</span>
             <strong>{statusLabel(status)}</strong>
@@ -169,15 +173,22 @@ export function CoachApp() {
           <div className="timer">{formatClock(seconds)}</div>
           <p className="timer-note">Aim for {selectedPrompt.duration}. Stop early if the point lands cleanly.</p>
           <div className="button-row">
-            <button className="primary" onClick={startRecording} disabled={status === "recording" || status === "uploading"}>
-              Start recording
+            <button
+              className="primary"
+              onClick={startRecording}
+              disabled={status === "requesting" || status === "recording" || status === "uploading"}
+            >
+              {status === "requesting" ? "Allow microphone" : "Start recording"}
             </button>
             <button className="secondary" onClick={stopRecording} disabled={status !== "recording"}>
               Stop and analyze
             </button>
           </div>
+          {error ? <p className="error-banner hero-error">{error}</p> : null}
           <p className="status-note">
-            {status === "uploading"
+            {status === "requesting"
+              ? "Waiting for browser microphone permission."
+              : status === "uploading"
               ? "Transcribing and scoring your speech."
               : "Keep the core message concise: opening, two proof points, close."}
           </p>
@@ -319,8 +330,21 @@ function stopTimer(timerRef: MutableRefObject<number | null>) {
   }
 }
 
-function statusLabel(status: "idle" | "recording" | "uploading" | "success" | "error") {
+async function requestMicrophoneStream() {
+  const microphoneRequest = navigator.mediaDevices.getUserMedia({ audio: true });
+  const timeout = new Promise<never>((_, reject) => {
+    window.setTimeout(() => {
+      reject(new Error("Microphone permission timed out. Allow microphone access in the browser, then try again."));
+    }, MICROPHONE_TIMEOUT_MS);
+  });
+
+  return Promise.race([microphoneRequest, timeout]);
+}
+
+function statusLabel(status: SessionStatus) {
   switch (status) {
+    case "requesting":
+      return "Mic permission";
     case "recording":
       return "Recording live";
     case "uploading":
@@ -332,6 +356,22 @@ function statusLabel(status: "idle" | "recording" | "uploading" | "success" | "e
     default:
       return "Standing by";
   }
+}
+
+function microphoneErrorMessage(error: unknown) {
+  if (error instanceof DOMException && error.name === "NotAllowedError") {
+    return "Microphone permission is blocked. Click the site settings icon beside the address bar, set Microphone to Allow, reload the page, then try again.";
+  }
+
+  if (error instanceof DOMException && error.name === "NotFoundError") {
+    return "No microphone was found. Connect or enable a microphone, then try again.";
+  }
+
+  if (error instanceof Error) {
+    return error.message;
+  }
+
+  return "Microphone access was blocked or unavailable.";
 }
 
 function mimeExtension(mimeType: string) {

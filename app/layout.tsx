@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Public_Sans } from "next/font/google";
 import type { ReactNode } from "react";
+// @ts-ignore: CSS module declarations are not yet available
 import "./globals.css";
 
 const displayFont = Cormorant_Garamond({
