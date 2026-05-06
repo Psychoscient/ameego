@@ -307,4 +307,4 @@ Focus on making ONE scenario work extremely well.
 Do not build more features.
 
 Make the core loop:
-**fast, accurate, and useful.**
+**fast, accurate, and useful.** 

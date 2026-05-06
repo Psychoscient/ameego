@@ -1,5 +1,5 @@
 import { analyzeTranscript, buildFallbackClarityFeedback } from "@/lib/analysis";
-import { generateClarityFeedback, transcribeAudio } from "@/lib/gemini";
+import { generateClarityFeedback, generateNonverbalFeedback, transcribeAudio } from "@/lib/gemini";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
@@ -7,15 +7,16 @@ export const maxDuration = 60;
 export async function POST(request: Request) {
   try {
     const formData = await request.formData();
-    const maybeFile = formData.get("audio");
+    const maybeFile = formData.get("media") ?? formData.get("audio");
     const recordingSeconds = Number(formData.get("recordingSeconds") || 0);
+    const cameraEnabled = formData.get("cameraEnabled") === "true";
 
     if (!(maybeFile instanceof File)) {
-      return Response.json({ error: "Audio upload is required." }, { status: 400 });
+      return Response.json({ error: "Recording upload is required." }, { status: 400 });
     }
 
     if (maybeFile.size === 0) {
-      return Response.json({ error: "Recorded audio was empty." }, { status: 400 });
+      return Response.json({ error: "Recorded media was empty." }, { status: 400 });
     }
 
     const transcription = await transcribeAudio(maybeFile);
@@ -60,7 +61,20 @@ export async function POST(request: Request) {
       clarity
     });
 
-    return Response.json(analysis);
+    let nonverbal = null;
+
+    if (cameraEnabled && maybeFile.type.startsWith("video/")) {
+      try {
+        nonverbal = await generateNonverbalFeedback(maybeFile);
+      } catch (error) {
+        console.error("Nonverbal analysis failed; returning speech analysis only.", error);
+      }
+    }
+
+    return Response.json({
+      ...analysis,
+      nonverbal
+    });
   } catch (error) {
     console.error(error);
     const message = error instanceof Error ? error.message : "Analysis failed.";

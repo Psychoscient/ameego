@@ -1,4 +1,5 @@
 export type StructureStatus = "structured" | "partial" | "unclear";
+export type NonverbalStatus = "needs-attention" | "steady" | "strong";
 
 export type SpeechMetrics = {
   wordCount: number;
@@ -18,12 +19,26 @@ export type SpeechMetrics = {
   completionScore: number;
 };
 
+export type NonverbalSignal = {
+  score: number;
+  status: NonverbalStatus;
+  note: string;
+};
+
+export type NonverbalAnalysis = {
+  eyeContact: NonverbalSignal;
+  posturePresence: NonverbalSignal;
+  gestureActivity: NonverbalSignal;
+  feedback: string[];
+};
+
 export type AnalysisResponse = {
   transcript: string;
   durationSeconds: number;
   metrics: SpeechMetrics;
   score: number;
   feedback: string[];
+  nonverbal?: NonverbalAnalysis | null;
 };
 
 export type PracticePrompt = {

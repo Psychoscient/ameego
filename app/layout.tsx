@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Public_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans, Space_Grotesk } from "next/font/google";
 import type { ReactNode } from "react";
 // @ts-ignore: CSS module declarations are not yet available
 import "./globals.css";
 
-const displayFont = Cormorant_Garamond({
+const displayFont = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-display",
   weight: ["500", "600", "700"]
 });
 
-const bodyFont = Public_Sans({
+const bodyFont = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-body"
 });

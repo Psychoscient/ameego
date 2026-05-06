@@ -16,6 +16,25 @@ type FeedbackPayload = {
   feedback: string[];
 };
 
+type NonverbalPayload = {
+  eyeContact: {
+    score: number;
+    status: "needs-attention" | "steady" | "strong";
+    note: string;
+  };
+  posturePresence: {
+    score: number;
+    status: "needs-attention" | "steady" | "strong";
+    note: string;
+  };
+  gestureActivity: {
+    score: number;
+    status: "needs-attention" | "steady" | "strong";
+    note: string;
+  };
+  feedback: string[];
+};
+
 export async function transcribeAudio(file: File) {
   const payload = await generateStructuredContent<TranscriptionPayload>({
     prompt: [
@@ -96,6 +115,69 @@ export async function generateClarityFeedback(input: {
   });
 }
 
+export async function generateNonverbalFeedback(file: File) {
+  const payload = await generateStructuredContent<NonverbalPayload>({
+    prompt: [
+      "You are Ameego, a concise formal speaking coach.",
+      "Analyze only the visible nonverbal delivery in this short speaking video.",
+      "Return JSON only.",
+      "Rate these 3 signals only: eyeContact, posturePresence, gestureActivity.",
+      "For each signal, return a score from 0 to 10, a status of `needs-attention`, `steady`, or `strong`, and one short coaching note.",
+      "Return 2-3 short actionable feedback strings in `feedback`.",
+      "Only judge what is visible in the clip. If the camera framing is limited, reflect that in the notes rather than inventing detail."
+    ].join("\n"),
+    schema: {
+      type: "OBJECT",
+      properties: {
+        eyeContact: {
+          type: "OBJECT",
+          properties: {
+            score: { type: "NUMBER" },
+            status: { type: "STRING", enum: ["needs-attention", "steady", "strong"] },
+            note: { type: "STRING" }
+          },
+          required: ["score", "status", "note"]
+        },
+        posturePresence: {
+          type: "OBJECT",
+          properties: {
+            score: { type: "NUMBER" },
+            status: { type: "STRING", enum: ["needs-attention", "steady", "strong"] },
+            note: { type: "STRING" }
+          },
+          required: ["score", "status", "note"]
+        },
+        gestureActivity: {
+          type: "OBJECT",
+          properties: {
+            score: { type: "NUMBER" },
+            status: { type: "STRING", enum: ["needs-attention", "steady", "strong"] },
+            note: { type: "STRING" }
+          },
+          required: ["score", "status", "note"]
+        },
+        feedback: {
+          type: "ARRAY",
+          minItems: 2,
+          maxItems: 3,
+          items: {
+            type: "STRING"
+          }
+        }
+      },
+      required: ["eyeContact", "posturePresence", "gestureActivity", "feedback"]
+    },
+    file
+  });
+
+  return {
+    eyeContact: normalizeSignal(payload.eyeContact),
+    posturePresence: normalizeSignal(payload.posturePresence),
+    gestureActivity: normalizeSignal(payload.gestureActivity),
+    feedback: (payload.feedback || []).slice(0, 3).map((item) => item.trim()).filter(Boolean)
+  };
+}
+
 async function generateStructuredContent<T>(input: {
   prompt: string;
   schema: Record<string, unknown>;
@@ -157,6 +239,14 @@ async function generateStructuredContent<T>(input: {
 async function fileToBase64(file: File) {
   const buffer = Buffer.from(await file.arrayBuffer());
   return buffer.toString("base64");
+}
+
+function normalizeSignal(signal: NonverbalPayload["eyeContact"]) {
+  return {
+    score: Number(Math.max(0, Math.min(10, signal.score)).toFixed(1)),
+    status: signal.status,
+    note: signal.note.trim()
+  };
 }
 
 function extractOutputText(payload: any) {

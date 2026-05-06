@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#e7c268",
+                    "tertiary-fixed-dim": "#ffb4a2",
+                    "surface-dim": "#dddbc8",
+                    "primary-fixed": "#ffdf96",
+                    "tertiary-container": "#ffb7a5",
+                    "surface-bright": "#fdfae7",
+                    "primary-container": "#e9c46a",
+                    "surface-variant": "#e6e3d0",
+                    "outline": "#7f7666",
+                    "on-secondary-fixed-variant": "#2d4f25",
+                    "on-background": "#1c1c11",
+                    "error": "#ba1a1a",
+                    "on-error": "#ffffff",
+                    "surface-container-low": "#f7f4e1",
+                    "error-container": "#ffdad6",
+                    "secondary-container": "#c2ebb2",
+                    "on-primary": "#ffffff",
+                    "surface": "#fdfae7",
+                    "primary": "#765a05",
+                    "tertiary-fixed": "#ffdad2",
+                    "surface-container-highest": "#e6e3d0",
+                    "primary-fixed-dim": "#e7c268",
+                    "secondary": "#44673a",
+                    "on-primary-container": "#695000",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed-variant": "#83260e",
+                    "on-primary-fixed": "#251a00",
+                    "on-tertiary-container": "#95331a",
+                    "on-tertiary-fixed": "#3c0700",
+                    "surface-container": "#f1eedb",
+                    "surface-tint": "#765a05",
+                    "on-secondary-fixed": "#012201",
+                    "secondary-fixed": "#c5eeb5",
+                    "outline-variant": "#d0c5b2",
+                    "on-surface": "#1c1c11",
+                    "on-secondary-container": "#486b3e",
+                    "tertiary": "#a33d23",
+                    "on-primary-fixed-variant": "#5a4400",
+                    "inverse-surface": "#313124",
+                    "inverse-on-surface": "#f4f1de",
+                    "on-secondary": "#ffffff",
+                    "on-surface-variant": "#4d4638",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#a9d29b",
+                    "background": "#fdfae7",
+                    "surface-container-high": "#ece9d6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-margin": "20px",
+                    "xl": "64px",
+                    "sm": "12px",
+                    "gutter": "16px",
+                    "md": "24px",
+                    "base": "8px",
+                    "xs": "4px",
+                    "lg": "48px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-pixel": ["monospace"],
+                    "display-xl": ["Space Grotesk"],
+                    "headline-lg": ["Space Grotesk"],
+                    "headline-md": ["Space Grotesk"],
+                    "body-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-pixel": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "display-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .btn-retro-shadow {
+            box-shadow: 0px 4px 0px 0px #1c1c11;
+        }
+        .btn-retro-shadow:active {
+            box-shadow: 0px 1px 0px 0px #1c1c11;
+            transform: translateY(3px);
+        }
+        .card-retro-shadow {
+            box-shadow: 0px 6px 0px 0px rgba(28, 28, 17, 0.1);
+        }
+        .pixel-border {
+            border: 2px solid #7f766633;
+        }
+        .segmented-progress {
+            background-image: linear-gradient(90deg, transparent 75%, #fdfae7 75%);
+            background-size: 20px 100%;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-inverse-surface border-b-2 border-outline-variant/20 dark:border-outline/30 shadow-[0px_4px_0px_0px_rgba(28,28,11,0.05)] docked full-width top-0 z-40 sticky">
+<div class="flex justify-between items-center h-16 px-gutter w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-base">
+<span class="font-display-xl text-display-xl text-primary dark:text-inverse-primary tracking-tighter uppercase">AMEEGO</span>
+</div>
+<nav class="hidden md:flex items-center gap-md">
+<a class="text-primary font-bold border-b-2 border-primary hover:bg-surface-container-high transition-colors duration-200 px-2 py-1" href="#">Home</a>
+<a class="text-on-surface-variant font-medium hover:bg-surface-container-high transition-colors duration-200 px-2 py-1" href="#">Learning Path</a>
+<a class="text-on-surface-variant font-medium hover:bg-surface-container-high transition-colors duration-200 px-2 py-1" href="#">Practice</a>
+</nav>
+<div class="flex items-center gap-sm">
+<div class="hidden sm:flex items-center gap-xs px-3 py-1 bg-primary-container/20 rounded-full border border-primary/20">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="local_fire_department">local_fire_department</span>
+<span class="font-label-pixel text-primary">7 Day Streak</span>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant p-2 rounded-full hover:bg-surface-container-high transition-colors" data-icon="notifications">notifications</button>
+<div class="w-10 h-10 rounded-lg overflow-hidden border-2 border-primary/30 flex-shrink-0">
+<img alt="User avatar with retro pixel style" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaGa0EVCraZMnc8FTfr1toMv2R3aK3Lj3c-DiRD1xOKdA4CBf3hN9khUZGKUaHDaEnMEvDFGZ2tzLDHkABSP1vi1PCkSQ8wnTOGaMaEgxr7rCqpicBLFlrCCM5jtz__L9ED_N7YbZmt1cE6uoxuGvS9-UBonaW5_IdrWqwOLt5EBRd1AHUCn2fdBu38MGC0llRj08y6GgN7ZH-FGmril47ricr_6uGzbyvYd8blmJZkl4UNwQh1kGv6ydCAk-XfXe9tVu_g4NspudJ"/>
+</div>
+</div>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative pt-xl pb-lg px-container-margin overflow-hidden">
+<div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-lg items-center">
+<div class="z-10 text-center lg:text-left">
+<div class="inline-flex items-center gap-2 px-4 py-2 bg-secondary-container text-on-secondary-container rounded-full mb-md font-label-pixel border-2 border-secondary/10">
+<span class="material-symbols-outlined text-sm" data-icon="verified_user">verified_user</span>
+                        AI-POWERED COACHING
+                    </div>
+<h1 class="font-display-xl text-[56px] md:text-[72px] text-on-background leading-tight mb-md tracking-tighter">
+                        Master the Art of <span class="text-primary">Formal Speaking.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-xl max-w-xl mx-auto lg:mx-0">
+                        Your AI coach for clear, confident, and effective public communication. Real-time feedback wrapped in a cozy pixel-perfect environment.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-md justify-center lg:justify-start">
+<button class="btn-retro-shadow bg-primary text-on-primary px-xl py-md rounded-lg font-headline-md font-bold transition-all active:translate-y-[1px]">
+                            Start Your Pre-Test
+                        </button>
+<button class="border-2 border-outline/30 px-xl py-md rounded-lg font-headline-md font-bold hover:bg-surface-container-high transition-colors">
+                            Explore Path
+                        </button>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -top-12 -right-12 w-64 h-64 bg-primary-container rounded-full opacity-20 blur-3xl"></div>
+<div class="relative z-10 p-md bg-white/40 backdrop-blur-md rounded-xl border-2 border-white/60 shadow-xl overflow-hidden">
+<img class="rounded-lg w-full h-auto shadow-2xl" data-alt="A detailed digital illustration showcasing an AI speaking interface with a friendly pixel-art duck character at the center. The background features a warm cream and beige palette with subtle 8-bit aesthetic patterns. UI elements around the character show voice frequency waves in sage green and terracotta red. The lighting is soft and inviting, creating a high-fidelity retro-modern learning environment." src="https://lh3.googleusercontent.com/aida/ADBb0ugtSgMtJYbLIkqG9EeRqUelpSzOCuk8t98EoRsA6WsM-OgTW-Uzfc6pX8T6AsR7E_WuUKbli0jXz3FvuLJdAoxBSZgJR_K2lEuBfZPRbl_UaZ3EDUZoTwcDcYjh04O3RfPjR079UjQSMGdIQbji35aNLlMino75SXLgXeYQbsKqioVGB_BI-xBuTVhkTCxnavgKSY8-QHJmwjWBgOhrW5PmiG3oWwP0DPz0az-aET17blT3wQOoAxmf7scUVwi2P2wJFXMV6hu2yyU"/>
+</div>
+<!-- Floating Badge -->
+<div class="absolute -bottom-6 -left-6 bg-surface p-md rounded-xl border-2 border-primary/20 card-retro-shadow flex items-center gap-md">
+<div class="w-12 h-12 bg-tertiary-container rounded-full flex items-center justify-center text-on-tertiary-container">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+</div>
+<div>
+<p class="font-label-pixel text-primary mb-1">LIVE ANALYTICS</p>
+<p class="font-body-md font-bold">Confidence: 94%</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid Features -->
+<section class="py-xl px-container-margin bg-surface-container-low">
+<div class="max-w-7xl mx-auto">
+<div class="mb-lg text-center max-w-2xl mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-on-background mb-sm">Coach-Level Analytics</h2>
+<p class="text-on-surface-variant">We break down your speech patterns using advanced neural networks, delivered through a low-stakes nostalgic lens.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<!-- Feature 1: Filler Words -->
+<div class="md:col-span-2 bg-surface p-md rounded-xl border-2 border-outline-variant/30 card-retro-shadow flex flex-col md:flex-row gap-md items-center">
+<div class="flex-1">
+<div class="w-12 h-12 bg-secondary-container rounded-lg flex items-center justify-center mb-md border-b-4 border-secondary/30">
+<span class="material-symbols-outlined text-secondary" data-icon="mic_off">mic_off</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-xs">Filler Word Detection</h3>
+<p class="text-on-surface-variant mb-md">Eliminate 'um', 'uh', and 'like' from your vocabulary. Our AI tracks every pause and crutch word in real-time.</p>
+<div class="flex flex-wrap gap-xs">
+<span class="px-3 py-1 bg-surface-container-highest rounded-full font-label-pixel text-xs border border-outline-variant">UM: 4</span>
+<span class="px-3 py-1 bg-surface-container-highest rounded-full font-label-pixel text-xs border border-outline-variant">LIKE: 2</span>
+<span class="px-3 py-1 bg-error-container text-on-error-container rounded-full font-label-pixel text-xs border border-error/20">SO: 12 (High)</span>
+</div>
+</div>
+<div class="w-full md:w-1/2 bg-surface-container rounded-lg p-sm border-2 border-outline-variant/20">
+<div class="space-y-sm">
+<div class="h-4 w-full bg-outline-variant/30 rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-3/4 rounded-full"></div>
+</div>
+<div class="h-4 w-full bg-outline-variant/30 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-1/2 rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Feature 2: Pacing -->
+<div class="bg-surface p-md rounded-xl border-2 border-outline-variant/30 card-retro-shadow flex flex-col">
+<div class="w-12 h-12 bg-tertiary-container rounded-lg flex items-center justify-center mb-md border-b-4 border-tertiary/30">
+<span class="material-symbols-outlined text-tertiary" data-icon="speed">speed</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-xs">Pacing Analysis</h3>
+<p class="text-on-surface-variant mb-md">Are you rushing? Or talking too slow? Find your golden rhythm of 150 words per minute.</p>
+<div class="mt-auto pt-md border-t border-outline-variant/20">
+<div class="flex justify-between items-center mb-xs">
+<span class="font-label-pixel text-xs uppercase">Words per minute</span>
+<span class="font-label-pixel text-primary font-bold">142 WPM</span>
+</div>
+<div class="h-3 w-full bg-surface-container-highest rounded-full segmented-progress border border-outline-variant/20">
+<div class="h-full bg-primary w-[80%]"></div>
+</div>
+</div>
+</div>
+<!-- Feature 3: Path -->
+<div class="md:col-span-3 bg-surface p-md rounded-xl border-2 border-outline-variant/30 card-retro-shadow flex flex-col md:flex-row gap-lg items-center">
+<div class="w-full md:w-1/3">
+<img class="rounded-lg w-full border-2 border-outline-variant/20 shadow-md" data-alt="An artistic rendering of a modular learning path for public speaking. It features a series of interconnected pixel-art stages or levels set against a warm, earthy beige landscape. Each stage represents a different skill like clarity, storytelling, or persuasion, shown as unique pixel-art buildings or icons. The lighting is bright and cheerful, suggesting a journey of growth and achievement." src="https://lh3.googleusercontent.com/aida/ADBb0ujb8okY5SEt7lpNjg6uyaDN1Jx76t4D00_KoXdlPRaDP6-Y3PBVsksVhpz5Fv3D1yxJ94ackFX-C2RuoxQGF9ii37dleJYzz_2UaFx23gbDxu-3xyLF-MVXJGPUkEyp40g0oE0q3ZDe_dZkP5cFGgKFBsJYyLiJ9PC_FAG-an8-H81Np0j0sIlqKhl-WESLxbe9tjTvOcRyx9GqEvvV3MZJRkkgn7hew3bv-ogE2AnprUUYLGN3wqBnIyTrfBWRCs7LF1vJx1Ciu18"/>
+</div>
+<div class="flex-1">
+<h3 class="font-display-xl text-display-xl mb-sm">Modular Learning Path</h3>
+<p class="text-on-surface-variant text-body-lg mb-md">A custom curriculum built for your goals. Whether it's a board meeting or a wedding toast, AMEEGO maps out your success step-by-step.</p>
+<div class="grid grid-cols-2 gap-sm">
+<div class="flex items-center gap-sm p-sm bg-surface-container-high rounded-lg">
+<span class="material-symbols-outlined text-primary" data-icon="school">school</span>
+<span class="font-bold">Fundamentals</span>
+</div>
+<div class="flex items-center gap-sm p-sm bg-surface-container-high rounded-lg">
+<span class="material-symbols-outlined text-primary" data-icon="account_tree">account_tree</span>
+<span class="font-bold">Storytelling</span>
+</div>
+<div class="flex items-center gap-sm p-sm bg-surface-container-high rounded-lg">
+<span class="material-symbols-outlined text-primary" data-icon="sentiment_very_satisfied">sentiment_very_satisfied</span>
+<span class="font-bold">Confidence</span>
+</div>
+<div class="flex items-center gap-sm p-sm bg-surface-container-high rounded-lg">
+<span class="material-symbols-outlined text-primary" data-icon="campaign">campaign</span>
+<span class="font-bold">Persuasion</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-xl px-container-margin">
+<div class="max-w-5xl mx-auto bg-primary text-on-primary rounded-3xl p-lg relative overflow-hidden shadow-2xl">
+<div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-3xl"></div>
+<div class="relative z-10 text-center flex flex-col items-center">
+<div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mb-md">
+<img alt="Señor Duck pixel mascot" class="w-16 h-16" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwNKJ8fh31-Bh5sVO6N1TAduE-ykGNNofHRxifMxw_1uvKxSS5VKpIEO2nWVLkOgZpDIa8kDFkB7vzU7RJlUB2QAdhwn-rFGIVeCQ6JrCw-wQkMouR6OctFPdCLXO3uf6C1T9pY3gT4O-4jiESUQLhXD58TM-Vucu4uu-naZu4eSqyYyCIAfZP7YfZ5slyAqjoRT0x5zSFgOQrghTjhZI1DscmHm5stiqoc-j1TFgOBNO7J_Us0O3SI4fEoJSIXs-RuMRrMYASClyP"/>
+</div>
+<h2 class="font-display-xl text-[42px] leading-tight mb-md">Ready to speak with <br/><span class="underline decoration-secondary-fixed-dim decoration-4 underline-offset-8">pixel-perfect</span> clarity?</h2>
+<p class="text-on-primary/80 font-body-lg mb-xl max-w-xl">Join 50,000+ professionals using AMEEGO to refine their voices. No judgment, just growth.</p>
+<button class="bg-surface text-primary px-xl py-md rounded-lg font-headline-md font-bold shadow-[0px_4px_0px_0px_#251a00] active:shadow-none active:translate-y-1 transition-all">
+                        Start Your Pre-Test Now
+                    </button>
+<p class="mt-md font-label-pixel text-xs opacity-70">FREE TO START • NO CREDIT CARD REQUIRED</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest dark:bg-inverse-surface border-t-2 border-outline-variant/20">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center py-lg px-container-margin w-full">
+<div class="mb-md md:mb-0 text-center md:text-left">
+<span class="font-headline-md text-headline-md text-primary block mb-1">AMEEGO AI</span>
+<p class="font-label-pixel text-label-pixel text-on-surface-variant uppercase">© 2024 AMEEGO AI. Practice makes pixel-perfect.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-md">
+<a class="font-label-pixel text-label-pixel text-on-surface-variant hover:text-primary transition-colors" href="#">UVP</a>
+<a class="font-label-pixel text-label-pixel text-on-surface-variant hover:text-primary transition-colors" href="#">Features</a>
+<a class="font-label-pixel text-label-pixel text-on-surface-variant hover:text-primary transition-colors" href="#">Pricing</a>
+<a class="font-label-pixel text-label-pixel text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy</a>
+</div>
+</div>
+</footer>
+</body></html>

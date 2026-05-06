@@ -2,21 +2,21 @@ import type { PracticePrompt } from "@/lib/types";
 
 export const PRACTICE_PROMPTS: PracticePrompt[] = [
   {
-    id: "pitch",
-    label: "45 Second Demo",
-    brief: "Explain to Ameego, why does it matter?.",
+    id: "intro",
+    label: "Executive Introduction",
+    brief: "Introduce who you are, what you do, and why your work matters in a calm, formal tone.",
     duration: "45 sec"
   },
   {
-    id: "demo",
-    label: "30 Second Demo",
-    brief: "Walk through Ameego what you got, and let it rip!",
-    duration: "30 sec"
+    id: "walkthrough",
+    label: "Project Walkthrough",
+    brief: "Explain a project, the problem it addressed, and the result in one clean minute.",
+    duration: "60 sec"
   },
   {
-    id: "story",
-    label: "60 Second Demo",
-    brief: "Tell Ameego a story, He is a very good listener!",
-    duration: "60 sec"
+    id: "impromptu",
+    label: "Impromptu Response",
+    brief: "Answer on the spot: defend one idea you would confidently say in a meeting and why.",
+    duration: "30 sec"
   }
 ];

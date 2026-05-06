@@ -1,0 +1,275 @@
+AMEEGO — Committed Final Product Direction
+1. Final Core Concept
+Ameego is an AI-powered formal speaking coach that helps users improve the soft skill of public communication in formal and public environments.
+It is not limited to one specific situation like interviews or classroom presentations. Instead, Ameego focuses on improving the user’s overall ability to speak clearly, confidently, and effectively in formal/public settings.
+It supports situations such as:
+presentations
+speeches
+interviews
+meetings
+reports
+academic defenses
+leadership speaking tasks
+The main goal is to help users improve how they speak, not just what they say.
+
+2. Final Problem Statement
+Many people have good ideas but struggle to express them clearly in formal or public speaking situations. Common problems include unclear articulation, too many filler words, poor pacing, weak structure, repetitive phrasing, and nervous delivery habits.
+Traditional public speaking coaching is often expensive, time-consuming, or inaccessible, especially for students, job seekers, and young professionals.
+Ameego solves this by giving users an accessible AI coach that analyzes their speech, gives measurable feedback, and guides them through a modular learning path based on their current skill level and weaknesses.
+
+3. Final Target Users
+Ameego is for people who want to improve formal/public speaking as a soft skill, including:
+Students preparing for class presentations, reports, or thesis defenses
+Job seekers preparing for interviews
+Professionals preparing for meetings, proposals, and presentations
+Team leaders, managers, and organization officers delivering speeches
+Anyone who wants to improve their speaking ability in formal/public environments
+
+4. Heavy MVP / Almost-Built Project Scope
+Since your MVP is meant to be an almost already built product, the heavier feature set is acceptable. However, the features still need to be organized properly so judges see that the scope is intentional, not random.
+MVP Feature Set
+4.1 Pre-Test Assessment
+Ameego begins with a speaking pre-test to evaluate the user’s current level.
+The user may be asked to complete a short speaking task, such as:
+introduce yourself formally
+explain a simple topic
+give a short opinion
+deliver a one-minute presentation
+The system then places the user into a skill level such as:
+Beginner
+Developing
+Intermediate
+Advanced
+This pre-test helps Ameego personalize the user’s learning path.
+
+4.2 Speech-to-Text Analysis
+Ameego converts the user’s spoken input into text so the system can analyze the content of the speech.
+It checks:
+filler words
+repeated words
+sentence flow
+vocabulary usage
+clarity of ideas
+organization of thoughts
+This allows the app to identify the user’s speaking habits and weaknesses.
+
+4.3 Filler Word Detection
+Ameego detects common filler words such as:
+um
+uh
+like
+actually
+basically
+you know
+so
+The system shows how often these words appear and explains how they affect the speech.
+Instead of only saying “you used too many filler words,” Ameego should give specific feedback like:
+You used “um” 8 times and “like” 5 times. Most of these appeared before starting a new point. Try replacing fillers with a short pause.
+
+4.4 Pacing Analysis
+Ameego measures how fast or slow the user speaks.
+It checks:
+words per minute
+long pauses
+rushed sections
+uneven pacing
+The app then tells the user if their pacing is too fast, too slow, or appropriate for formal speaking.
+This is important because speaking too fast can make the user sound nervous, while speaking too slowly can make the delivery feel weak or unprepared.
+
+4.5 Speech Clarity Feedback
+For the MVP, speech clarity should focus mainly on message clarity, not full pronunciation accuracy.
+Ameego analyzes:
+whether the message is understandable
+whether the sentences are too long or confusing
+whether the speaker repeats ideas too much
+whether the main point is clear
+Avoid claiming that the MVP can perfectly judge accent, pronunciation, or confidence. That can be improved later.
+
+4.6 Speech Structure Feedback
+Ameego checks if the user’s speech has a clear structure.
+It evaluates whether the speech has:
+an opening
+main points
+transitions
+conclusion
+clear flow of ideas
+For example, if the user gives a formal answer, Ameego can check if the answer follows a clear structure such as:
+Point → Explanation → Example → Closing
+This makes the feedback more useful than just grammar correction.
+
+4.7 Speaking Readiness Score
+Ameego gives a Speaking Readiness Score based on measurable performance factors.
+The score should be based on:
+filler word frequency
+pacing
+clarity
+structure
+speech length
+repetition
+completion of the task
+Do not call it a “confidence score” because true confidence is difficult to measure accurately. “Speaking Readiness Score” sounds more realistic and defensible.
+
+4.8 Modular Learning Path
+Ameego uses a modular learning path inspired by apps like Duolingo, but focused on formal/public speaking.
+After the pre-test, the user is placed into a learning path based on their weaknesses.
+Example modules:
+Filler Word Control
+Pacing and Pauses
+Clear Sentence Delivery
+Speech Structure
+Storytelling
+Persuasive Speaking
+Formal Presentation Delivery
+Impromptu Speaking
+Q&A Response Practice
+Final Speaking Challenge
+Each module contains short drills that target a specific speaking skill.
+
+4.9 AI-Driven Practice Drills
+Ameego gives practice drills based on the user’s performance.
+Examples:
+Weakness Detected
+Recommended Drill
+Too many filler words
+Pause Control Drill
+Speaking too fast
+Pacing Drill
+Weak structure
+Point-Example-Closing Drill
+Unclear ideas
+One-Minute Explanation Drill
+Repetitive wording
+Vocabulary Variety Drill
+Poor closing
+Strong Conclusion Drill
+
+This makes the product feel personalized and useful.
+
+4.10 Progress Dashboard
+Ameego includes a dashboard that tracks user improvement over time.
+The dashboard can show:
+latest Speaking Readiness Score
+filler word count
+pacing score
+clarity score
+structure score
+completed modules
+practice streak
+improvement history
+Since this is a heavy MVP, the dashboard is acceptable, but it should stay clean and easy to understand.
+
+4.11 AI Follow-Up Question Generator
+This is a strong feature and more realistic than a full video call chatbot.
+After the user finishes speaking, Ameego can ask follow-up questions such as:
+Can you explain your second point more clearly?
+Can you give a stronger example?
+Can you summarize your main idea in one sentence?
+How would you answer if the audience disagreed?
+This helps users practice thinking and speaking under pressure.
+This feature should be included if possible because it directly supports formal/public speaking improvement.
+
+4.12 AMEEGO Buddy
+The Ameego buddy can be included as a supporting UX/branding feature, not as the main product.
+Its role should be:
+guiding users through modules
+explaining feedback in a friendly way
+giving encouragement
+making the app feel less intimidating
+helping users stay consistent
+This is good for branding, especially in a hackathon. But do not oversell it. The AI coach and feedback system are still the core.
+
+5. Future Features
+These are good features, but they should be placed under future development, not core MVP.
+5.1 Camera-Based Body Language Analysis
+This can analyze:
+posture
+eye contact
+hand gestures
+facial expressions
+distracting mannerisms
+Judge warning: This is useful, but it is technically heavy and privacy-sensitive. Only include it if your team can explain how you will protect user data.
+Best wording:
+Future body language analysis may use camera input to detect posture, eye contact, gestures, and distracting mannerisms to help users improve physical delivery.
+
+5.2 AI Video Call Practice
+This is also a good future feature, but it is too complex to be a required MVP feature.
+It can be used for:
+mock interviews
+presentation Q&A
+debate practice
+meeting simulations
+client pitch practice
+Better future wording:
+Ameego may later include AI-powered speaking simulations where users can practice with an AI audience, interviewer, or panel.
+
+5.3 Voice Tone and Emotion Analysis
+This can be useful, but it should be handled carefully.
+Instead of saying the app detects emotions, say:
+Ameego may analyze vocal delivery patterns such as tone variation, energy, volume, and monotone delivery.
+This is safer and more realistic than claiming it can accurately detect emotions.
+
+6. Final MVP Priority Ranking
+Since your MVP is heavy, here is the priority order:
+Priority
+Feature
+Status
+1
+Pre-test assessment
+Core MVP
+2
+Speech-to-text analysis
+Core MVP
+3
+Filler word detection
+Core MVP
+4
+Pacing analysis
+Core MVP
+5
+Speech structure feedback
+Core MVP
+6
+Speaking Readiness Score
+Core MVP
+7
+Modular learning path
+Core MVP
+8
+AI practice drills
+Core MVP
+9
+Progress dashboard
+Core MVP
+10
+AI follow-up questions
+Strong MVP add-on
+11
+AMEEGO buddy
+Branding/UX add-on
+12
+Camera body language analysis
+Future feature
+13
+AI video call chatbot
+Future feature
+14
+Tone/emotion analysis
+Future feature
+
+
+7. Final Unique Value Proposition
+Ameego helps users improve formal and public speaking as a soft skill through AI-powered speech analysis, measurable feedback, and personalized modular training.
+Unlike generic grammar or speech tools, Ameego focuses on the full speaking performance: pacing, filler words, clarity, structure, delivery habits, and continuous improvement.
+
+8. Final Simple Pitch
+Ameego is an AI-powered formal speaking coach that helps users improve public communication in formal and public environments. It starts with a pre-test, identifies the user’s speaking level, analyzes speech through AI, gives a Speaking Readiness Score, and recommends modular practice drills based on the user’s weaknesses. Through measurable feedback and guided practice, Ameego helps users become clearer, more confident, and more effective speakers.
+
+9. Final Judge-Ready Verdict
+Your product is now much stronger because it has a clearer direction: formal/public speaking improvement as a soft skill.
+Since your MVP is supposed to be heavy and almost built, the feature set is acceptable, but only if you clearly separate:
+Core MVP: speech analysis, scoring, modules, drills, dashboard
+ Add-ons: AI follow-up questions, Ameego buddy
+ Future features: camera analysis, video AI chatbot, tone/emotion analysis
+The most important fix is to avoid sounding like you are building every possible communication feature. Present Ameego as a structured speaking improvement system, not just a random AI feedback app.
+
+
