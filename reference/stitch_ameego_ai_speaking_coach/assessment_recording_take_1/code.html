@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ameego Assessment Recording</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#604100",
+                        "secondary-container": "#ffaa83",
+                        "on-surface-variant": "#4f4538",
+                        "error-container": "#ffdad6",
+                        "inverse-on-surface": "#ffeedc",
+                        "surface-container-highest": "#fedeb5",
+                        "surface-tint": "#7d5710",
+                        "outline": "#817566",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#f0be6f",
+                        "primary": "#7d5710",
+                        "on-tertiary-fixed-variant": "#3d4b33",
+                        "primary-container": "#e9b869",
+                        "on-secondary-container": "#793c1d",
+                        "tertiary": "#546349",
+                        "on-secondary": "#ffffff",
+                        "surface": "#fff8f4",
+                        "tertiary-fixed": "#d7e8c7",
+                        "surface-dim": "#f5d5ad",
+                        "on-error-container": "#93000a",
+                        "on-background": "#281801",
+                        "surface-variant": "#fedeb5",
+                        "surface-container": "#ffebd4",
+                        "background": "#fff8f4",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed-dim": "#ffb595",
+                        "outline-variant": "#d3c4b3",
+                        "inverse-surface": "#3f2d11",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed": "#121f0b",
+                        "on-tertiary-container": "#44523a",
+                        "surface-container-low": "#fff1e4",
+                        "on-primary-container": "#6a4800",
+                        "primary-fixed": "#ffdead",
+                        "secondary": "#8f4d2d",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#713618",
+                        "tertiary-fixed-dim": "#bbccac",
+                        "surface-container-high": "#ffe4c3",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#fff8f4",
+                        "on-secondary-fixed": "#351000",
+                        "tertiary-container": "#b5c5a6",
+                        "on-primary-fixed": "#281900",
+                        "on-surface": "#281801",
+                        "inverse-primary": "#f0be6f",
+                        "secondary-fixed": "#ffdbcc"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "stack-lg": "64px",
+                        "margin": "32px",
+                        "unit": "8px",
+                        "container-max": "1200px",
+                        "stack-sm": "16px",
+                        "stack-md": "32px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "display-lg": ["Space Grotesk"],
+                        "body-lg": ["Inter"],
+                        "headline-sm": ["Space Grotesk"],
+                        "label-caps": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-sm": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "headline-md": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .pixel-shadow {
+            box-shadow: 4px 4px 0px 0px rgba(79, 69, 56, 1);
+        }
+        .pixel-shadow-sm {
+            box-shadow: 2px 2px 0px 0px rgba(79, 69, 56, 1);
+        }
+        .pixel-active:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px 0px rgba(79, 69, 56, 1);
+        }
+        .pixel-border {
+            border: 2px solid #4f4538;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen font-body-md overflow-x-hidden flex">
+<!-- TopAppBar (Hidden per JSON rules, but included for completeness if layout changes, hidden md:flex replaced with hidden) -->
+<!-- Nav is suppressed as this is a transactional/focused screen (Recording) -->
+<!-- SideNavBar (Suppressed for focused recording screen per JSON rules) -->
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col md:flex-row h-screen overflow-hidden p-margin gap-gutter max-w-container-max mx-auto">
+<!-- Left Column: Coach & Context (The "Sensei" space) -->
+<div class="flex-col gap-stack-md hidden md:flex w-1/3 h-full">
+<!-- Coach Buddy Container -->
+<div class="bg-surface-container-lowest pixel-border rounded-xl p-unit flex flex-col items-center justify-center relative overflow-hidden h-64 pixel-shadow">
+<!-- Soft Gold glow for 'attentive' state -->
+<div class="absolute inset-0 bg-primary-container opacity-20 pointer-events-none"></div>
+<!-- Placeholder for Pixel Avatar -->
+<div class="w-32 h-32 bg-surface-variant pixel-border rounded-full flex items-center justify-center mb-unit z-10">
+<img alt="Señor Duck Avatar" class="w-full h-full object-cover rounded-full" data-alt="A retro 8-bit pixel art style illustration of a friendly yellow duck character wearing headphones, acting as an AI coach. The duck has an attentive expression, set against a simple earthy beige background to match the cozy performance aesthetic. The image is rendered with clean, high-contrast pixel edges." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBH3bCNpSItYHydujKsWCZPiQJjJQtEVzq7WDr5_twB_fQ1_vHLtkcu5WdUCvxGyqGQlb7Pzgf9yoGV1mwcX3mMQwktZCsIIaW2VTNses_uAoytKjly9GeOxK23FOELcZgA9V9_bJaVx0Qdna9YMMFyerGfucVRtc5mLIUtacaKgBwejJmHOspql0oUsIVbn1nS7HpTYyq8xVaJmTJtpUdo1S5fJo7s8GIYo1AQspt96xvez69w5N5ERsBK4ve_D44nQjv1uY3_z5E"/>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface z-10">Señor Duck</h3>
+<span class="font-label-caps text-label-caps text-on-surface-variant mt-1 z-10 flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary inline-block"></span> Listening...
+                </span>
+</div>
+<!-- Speaking Tips Sidebar -->
+<div class="bg-surface-container-low pixel-border rounded-xl p-stack-sm flex-1 flex flex-col pixel-shadow">
+<h4 class="font-label-caps text-label-caps text-on-surface-variant mb-unit uppercase tracking-widest border-b-2 border-outline pb-2">Pre-Flight Checklist</h4>
+<ul class="flex flex-col gap-unit mt-unit flex-1 overflow-y-auto">
+<li class="flex items-start gap-2 p-2 rounded hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">speed</span>
+<div>
+<p class="font-body-md text-on-surface font-medium">Pace Yourself</p>
+<p class="font-body-md text-on-surface-variant text-sm">Aim for 130-150 words per minute.</p>
+</div>
+</li>
+<li class="flex items-start gap-2 p-2 rounded hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">record_voice_over</span>
+<div>
+<p class="font-body-md text-on-surface font-medium">Clear Tone</p>
+<p class="font-body-md text-on-surface-variant text-sm">Speak from your diaphragm.</p>
+</div>
+</li>
+<li class="flex items-start gap-2 p-2 rounded hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">visibility</span>
+<div>
+<p class="font-body-md text-on-surface font-medium">Eye Contact</p>
+<p class="font-body-md text-on-surface-variant text-sm">Look near the lens, not the screen.</p>
+</div>
+</li>
+</ul>
+</div>
+<button class="w-full py-3 px-4 bg-surface-container-highest text-on-surface font-headline-sm text-headline-sm pixel-border rounded-lg pixel-shadow pixel-active flex items-center justify-center gap-2 transition-transform">
+<span class="material-symbols-outlined">arrow_back</span>
+                Exit Studio
+            </button>
+</div>
+<!-- Right Column: Recording Interface -->
+<div class="flex-1 bg-surface-container-lowest pixel-border rounded-xl flex flex-col items-center justify-between p-stack-md relative pixel-shadow">
+<!-- Header Section -->
+<div class="text-center w-full max-w-lg">
+<span class="font-label-caps text-label-caps text-primary mb-2 block tracking-widest">Assessment 01</span>
+<h1 class="font-display-lg text-display-lg text-on-surface mb-unit">Record Your Introduction</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Introduce yourself and state your primary goal for using Ameego. Keep it natural.</p>
+</div>
+<!-- Central Recording Area -->
+<div class="w-full flex-1 flex flex-col items-center justify-center relative my-stack-sm min-h-[300px]">
+<!-- Camera Preview Toggle / State (Currently Off) -->
+<div class="absolute inset-0 bg-surface-container-low pixel-border rounded-lg flex flex-col items-center justify-center pixel-shadow-sm overflow-hidden">
+<div class="flex flex-col items-center justify-center text-on-surface-variant p-6 text-center">
+<span class="material-symbols-outlined text-6xl mb-4 opacity-50">videocam_off</span>
+<p class="font-body-md">Camera preview is off to reduce performance anxiety.</p>
+<p class="font-label-caps mt-2 text-xs opacity-75">Audio will still be analyzed.</p>
+</div>
+</div>
+<!-- Timer Overlay -->
+<div class="absolute top-4 right-4 bg-surface pixel-border rounded px-3 py-1 flex items-center gap-2 pixel-shadow-sm z-10">
+<span class="material-symbols-outlined text-on-surface-variant">timer</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">00:00</span>
+<span class="text-on-surface-variant font-body-md">/ 01:00</span>
+</div>
+</div>
+<!-- Controls Footer -->
+<div class="w-full flex items-center justify-center gap-gutter relative mt-auto">
+<!-- Secondary Action -->
+<button aria-label="Toggle Camera" class="p-3 bg-surface text-on-surface pixel-border rounded-full pixel-shadow pixel-active transition-transform flex items-center justify-center hover:bg-surface-container-high">
+<span class="material-symbols-outlined">videocam</span>
+</button>
+<!-- Primary Record CTA -->
+<button class="w-24 h-24 bg-primary text-on-primary rounded-full pixel-border flex items-center justify-center pixel-shadow pixel-active transition-all hover:bg-primary-container hover:text-on-primary-container relative group">
+<div class="absolute inset-0 rounded-full border-4 border-surface-container group-hover:scale-110 transition-transform duration-300"></div>
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">mic</span>
+</button>
+<!-- Secondary Action -->
+<button aria-label="Settings" class="p-3 bg-surface text-on-surface pixel-border rounded-full pixel-shadow pixel-active transition-transform flex items-center justify-center hover:bg-surface-container-high">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-stack-sm">Press Spacebar or tap to start</p>
+</div>
+</main>
+</body></html>

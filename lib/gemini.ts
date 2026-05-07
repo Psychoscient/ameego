@@ -16,6 +16,13 @@ type FeedbackPayload = {
   feedback: string[];
 };
 
+type FollowUpPayload = {
+  questions: Array<{
+    prompt: string;
+    intent: string;
+  }>;
+};
+
 type NonverbalPayload = {
   eyeContact: {
     score: number;
@@ -84,6 +91,8 @@ export async function generateClarityFeedback(input: {
   wpm: number;
   fillerCount: number;
   structureStatus: string;
+  repetitionScore?: number;
+  promptCompletionScore?: number;
 }) {
   return generateStructuredContent<FeedbackPayload>({
     prompt: [
@@ -94,6 +103,8 @@ export async function generateClarityFeedback(input: {
       `Words per minute: ${input.wpm}`,
       `Filler count: ${input.fillerCount}`,
       `Structure status: ${input.structureStatus}`,
+      `Repetition score: ${input.repetitionScore ?? "unknown"}`,
+      `Prompt completion score: ${input.promptCompletionScore ?? "unknown"}`,
       "Return a clarityScore from 0 to 10 and 2-3 short actionable coaching notes.",
       "Use the supplied metrics and transcript only. Do not invent additional numeric measurements."
     ].join("\n"),
@@ -113,6 +124,55 @@ export async function generateClarityFeedback(input: {
       required: ["clarityScore", "feedback"]
     }
   });
+}
+
+export async function generateFollowUpQuestions(input: {
+  transcript: string;
+  promptLabel?: string;
+  recommendedDrillTitle: string;
+  weakestArea: string;
+}) {
+  const payload = await generateStructuredContent<FollowUpPayload>({
+    prompt: [
+      "You are Ameego, a concise public speaking coach.",
+      "Write exactly 2 short follow-up speaking prompts after a practice answer.",
+      `Original prompt label: ${input.promptLabel || "general practice"}`,
+      `Transcript: ${input.transcript}`,
+      `Weakest area: ${input.weakestArea}`,
+      `Recommended drill: ${input.recommendedDrillTitle}`,
+      "Return JSON only.",
+      "Each question must include `prompt` and `intent`.",
+      "Make each prompt directly useful for improving the weak area, not generic encouragement."
+    ].join("\n"),
+    schema: {
+      type: "OBJECT",
+      properties: {
+        questions: {
+          type: "ARRAY",
+          minItems: 2,
+          maxItems: 2,
+          items: {
+            type: "OBJECT",
+            properties: {
+              prompt: { type: "STRING" },
+              intent: { type: "STRING" }
+            },
+            required: ["prompt", "intent"]
+          }
+        }
+      },
+      required: ["questions"]
+    }
+  });
+
+  return (payload.questions || [])
+    .slice(0, 2)
+    .map((question, index) => ({
+      id: `follow-up-${index + 1}`,
+      prompt: question.prompt.trim(),
+      intent: question.intent.trim()
+    }))
+    .filter((question) => question.prompt && question.intent);
 }
 
 export async function generateNonverbalFeedback(file: File) {

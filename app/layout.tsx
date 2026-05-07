@@ -6,13 +6,14 @@ import "./globals.css";
 
 const displayFont = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-display",
-  weight: ["500", "600", "700"]
+  variable: "--font-space-grotesk",
+  weight: ["300", "400", "500", "600", "700"]
 });
 
 const bodyFont = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-body"
+  variable: "--font-plus-jakarta-sans",
+  weight: ["300", "400", "500", "600", "700"]
 });
 
 export const metadata: Metadata = {
@@ -26,8 +27,11 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${displayFont.variable} ${bodyFont.variable}`}>{children}</body>
+    <html lang="en" className={`${displayFont.variable} ${bodyFont.variable}`}>
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+      </head>
+      <body>{children}</body>
     </html>
   );
 }

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ameego - Practice Review</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Space Grotesk & Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-fixed-variant": "#604100",
+                      "secondary-container": "#ffaa83",
+                      "on-surface-variant": "#4f4538",
+                      "error-container": "#ffdad6",
+                      "inverse-on-surface": "#ffeedc",
+                      "surface-container-highest": "#fedeb5",
+                      "surface-tint": "#7d5710",
+                      "outline": "#817566",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-fixed-dim": "#f0be6f",
+                      "primary": "#7d5710",
+                      "on-tertiary-fixed-variant": "#3d4b33",
+                      "primary-container": "#e9b869",
+                      "on-secondary-container": "#793c1d",
+                      "tertiary": "#546349",
+                      "on-secondary": "#ffffff",
+                      "surface": "#fff8f4",
+                      "tertiary-fixed": "#d7e8c7",
+                      "surface-dim": "#f5d5ad",
+                      "on-error-container": "#93000a",
+                      "on-background": "#281801",
+                      "surface-variant": "#fedeb5",
+                      "surface-container": "#ffebd4",
+                      "background": "#fff8f4",
+                      "on-primary": "#ffffff",
+                      "secondary-fixed-dim": "#ffb595",
+                      "outline-variant": "#d3c4b3",
+                      "inverse-surface": "#3f2d11",
+                      "on-error": "#ffffff",
+                      "on-tertiary-fixed": "#121f0b",
+                      "on-tertiary-container": "#44523a",
+                      "surface-container-low": "#fff1e4",
+                      "on-primary-container": "#6a4800",
+                      "primary-fixed": "#ffdead",
+                      "secondary": "#8f4d2d",
+                      "error": "#ba1a1a",
+                      "on-secondary-fixed-variant": "#713618",
+                      "tertiary-fixed-dim": "#bbccac",
+                      "surface-container-high": "#ffe4c3",
+                      "on-tertiary": "#ffffff",
+                      "surface-bright": "#fff8f4",
+                      "on-secondary-fixed": "#351000",
+                      "tertiary-container": "#b5c5a6",
+                      "on-primary-fixed": "#281900",
+                      "on-surface": "#281801",
+                      "inverse-primary": "#f0be6f",
+                      "secondary-fixed": "#ffdbcc"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "stack-lg": "64px",
+                      "margin": "32px",
+                      "unit": "8px",
+                      "container-max": "1200px",
+                      "stack-sm": "16px",
+                      "stack-md": "32px"
+              },
+              "fontFamily": {
+                      "body-md": ["Inter"],
+                      "display-lg": ["Space Grotesk"],
+                      "body-lg": ["Inter"],
+                      "headline-sm": ["Space Grotesk"],
+                      "label-caps": ["Space Grotesk"],
+                      "headline-md": ["Space Grotesk"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-sm": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                      "headline-md": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Pixel-style shadow utility based on design guidance */
+        .pixel-shadow {
+            box-shadow: 4px 4px 0px 0px #817566;
+        }
+        .pixel-shadow-sm {
+            box-shadow: 2px 2px 0px 0px #817566;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex">
+<!-- Shared Component: SideNavBar -->
+<nav class="hidden md:flex bg-surface-container fixed left-0 top-0 h-full w-64 border-r-2 border-outline flex-col p-unit gap-stack-sm z-50">
+<!-- Header -->
+<div class="px-3 pt-4 pb-6 border-b-2 border-outline mb-2">
+<h1 class="font-headline-md text-headline-md text-on-surface">Ameego</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-1">Studio Console</p>
+</div>
+<!-- Main Navigation -->
+<div class="flex-1 flex flex-col gap-2">
+<!-- Inactive Tab 1 -->
+<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:bg-surface-container-high hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-caps text-label-caps">Studio Home</span>
+</a>
+<!-- Active Tab 2: Performance (Matches Page Intent) -->
+<a class="flex items-center gap-3 px-4 py-3 rounded bg-primary-container text-on-primary-container border-2 border-on-surface-variant shadow-[4px_4px_0px_0px_rgba(79,69,56,1)] translate-y-0.5 translate-x-0.5 shadow-none transition-all" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-caps text-label-caps">Performance</span>
+</a>
+<!-- Inactive Tab 3 -->
+<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:bg-surface-container-high hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined">settings_voice</span>
+<span class="font-label-caps text-label-caps">Practice Loop</span>
+</a>
+<!-- Inactive Tab 4 -->
+<a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:bg-surface-container-high hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-label-caps text-label-caps">Coach Settings</span>
+</a>
+</div>
+<!-- CTA Action -->
+<div class="px-3 py-4">
+<button class="w-full flex items-center justify-center gap-2 py-3 bg-primary-container border-2 border-outline rounded text-on-primary-container font-label-caps text-label-caps pixel-shadow hover:translate-y-0.5 hover:translate-x-0.5 hover:shadow-none transition-all">
+<span class="material-symbols-outlined" style="font-size: 18px;">play_arrow</span>
+                Start Practice
+            </button>
+</div>
+<!-- Footer Navigation -->
+<div class="mt-auto border-t-2 border-outline pt-4 flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-2 rounded text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-size: 18px;">help</span>
+<span class="font-label-caps text-label-caps">Support</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 rounded text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-size: 18px;">history</span>
+<span class="font-label-caps text-label-caps">Archive</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-[256px] w-full p-margin">
+<div class="max-w-container-max mx-auto">
+<!-- Page Header -->
+<header class="mb-stack-md flex justify-between items-end border-b-2 border-outline pb-4">
+<div>
+<h2 class="font-label-caps text-label-caps text-secondary uppercase tracking-widest mb-2">Session Review</h2>
+<h1 class="font-display-lg text-display-lg text-on-surface">Executive Introduction</h1>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-2 border-2 border-outline rounded bg-surface text-on-surface font-label-caps text-label-caps pixel-shadow-sm hover:translate-y-0.5 hover:translate-x-0.5 hover:shadow-none transition-all">
+                        View Transcript
+                    </button>
+<button class="px-6 py-2 border-2 border-outline rounded bg-primary-container text-on-primary-container font-label-caps text-label-caps pixel-shadow-sm hover:translate-y-0.5 hover:translate-x-0.5 hover:shadow-none transition-all">
+                        Practice Again
+                    </button>
+</div>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Overview & Buddy -->
+<div class="lg:col-span-4 flex flex-col gap-gutter">
+<!-- Coach Buddy Container -->
+<div class="bg-surface-container-lowest border-2 border-outline rounded p-unit relative overflow-hidden">
+<div class="absolute inset-0 bg-primary-container opacity-20"></div>
+<div class="relative flex flex-col items-center p-4">
+<div class="w-32 h-32 bg-surface-container rounded border-2 border-outline mb-4 relative overflow-hidden pixel-shadow-sm">
+<img alt="Pixelated cartoon duck" class="w-full h-full object-cover" data-alt="A charming, retro 8-bit style pixel art illustration of a small yellow duck character acting as a public speaking coach. The duck is wearing tiny reading glasses and holds a small pointer stick, striking a celebratory pose with little pixelated sparks around it. The background is a flat, earthy beige to match the high-fidelity UI design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnteGiBadgz8WDis1je2cDGgeT3f3LV2g2HeEGe_CVJmwHzJ3OVT6FxqPfs5X7CQ_JPiOw9J8kYPqez2mnmYWdGXoF2JxiGYTjhYCfccQdbTrwDUyvg1Egkut3bhSbp3-zqEVXD1SfgJSjV3QP0FbueanQKIteD7_7MnPo_MAF-BRo-c-4eAciU4GXtCEVmQp-IqSaJA9_AO3Fv43PAdU5rvtP1hpKjInOOQcxn0_Iqi2O0hXZRifRiprcLfDvrBeIE-CPOL8sXVY"/>
+</div>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-1">Coach Señor Duck</h3>
+<p class="font-headline-sm text-headline-sm text-primary text-center">"Fantastic pacing! You really owned the room on that opening hook."</p>
+</div>
+</div>
+<!-- Readiness Score Card -->
+<div class="bg-surface-container-lowest border-2 border-outline rounded p-stack-sm pixel-shadow flex flex-col items-center justify-center py-stack-md">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-4">Readiness Score</h3>
+<div class="relative w-32 h-32 flex items-center justify-center mb-2">
+<!-- Simulated circular progress -->
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<circle class="stroke-surface-container-high" cx="50" cy="50" fill="none" r="45" stroke-width="10"></circle>
+<circle class="stroke-primary" cx="50" cy="50" fill="none" r="45" stroke-dasharray="283" stroke-dashoffset="42" stroke-width="10"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-display-lg text-display-lg text-on-surface leading-none">85</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">/100</span>
+</div>
+</div>
+<span class="inline-block px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed font-label-caps text-label-caps rounded-full border-2 border-outline">Ready for Pitch</span>
+</div>
+<!-- Top Takeaways -->
+<div class="bg-surface-container-lowest border-2 border-outline rounded p-stack-sm flex flex-col gap-4">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant border-b-2 border-outline pb-2">Top Takeaways</h3>
+<ul class="flex flex-col gap-3">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary" style="font-size: 20px;">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface">Great eye contact maintained during key value propositions.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary" style="font-size: 20px;">warning</span>
+<span class="font-body-md text-body-md text-on-surface">Reduce 'um' usage in the transition phase.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary" style="font-size: 20px;">trending_up</span>
+<span class="font-body-md text-body-md text-on-surface">Strong volume control, projecting confidence.</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Right Column: Detailed Analysis -->
+<div class="lg:col-span-8 flex flex-col gap-gutter">
+<!-- Speech Metrics Expandable Section -->
+<div class="bg-surface-container-lowest border-2 border-outline rounded overflow-hidden">
+<div class="bg-surface-container flex justify-between items-center p-4 border-b-2 border-outline cursor-pointer">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined">graphic_eq</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Speech Metrics</h3>
+</div>
+<span class="material-symbols-outlined">expand_less</span>
+</div>
+<div class="p-stack-sm grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Metric: Pacing -->
+<div class="border-2 border-outline p-4 rounded flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-2">Pacing</span>
+<div class="font-headline-md text-headline-md text-on-surface mb-1">142 <span class="font-body-md text-body-md text-on-surface-variant">wpm</span></div>
+<div class="mt-auto flex gap-1">
+<div class="h-2 flex-1 bg-surface-container rounded-full"></div>
+<div class="h-2 flex-1 bg-tertiary rounded-full"></div>
+<div class="h-2 flex-1 bg-surface-container rounded-full"></div>
+</div>
+<span class="font-label-caps text-label-caps text-tertiary mt-2">Optimal Zone</span>
+</div>
+<!-- Metric: Fillers -->
+<div class="border-2 border-outline p-4 rounded flex flex-col bg-error-container/20">
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-2">Filler Words</span>
+<div class="font-headline-md text-headline-md text-error mb-1">8 <span class="font-body-md text-body-md text-on-surface-variant">instances</span></div>
+<div class="mt-auto flex flex-wrap gap-2">
+<span class="px-2 py-0.5 bg-surface text-on-surface font-label-caps text-label-caps border border-outline rounded-full">Um (5)</span>
+<span class="px-2 py-0.5 bg-surface text-on-surface font-label-caps text-label-caps border border-outline rounded-full">Ah (3)</span>
+</div>
+</div>
+<!-- Metric: Clarity -->
+<div class="border-2 border-outline p-4 rounded flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-2">Clarity</span>
+<div class="font-headline-md text-headline-md text-on-surface mb-1">92%</div>
+<div class="mt-auto w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-[92%]"></div>
+</div>
+<span class="font-label-caps text-label-caps text-tertiary mt-2">Excellent</span>
+</div>
+</div>
+</div>
+<!-- Nonverbal Analysis -->
+<div class="bg-surface-container-lowest border-2 border-outline rounded overflow-hidden">
+<div class="bg-surface-container flex justify-between items-center p-4 border-b-2 border-outline cursor-pointer">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined">accessibility_new</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Nonverbal Analysis</h3>
+</div>
+<span class="material-symbols-outlined">expand_less</span>
+</div>
+<div class="p-stack-sm flex flex-col gap-6">
+<!-- Eye Contact Meter -->
+<div>
+<div class="flex justify-between items-end mb-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Eye Contact</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">9<span class="text-body-md text-on-surface-variant">/10</span></span>
+</div>
+<!-- Segmented MIDI style meter -->
+<div class="flex gap-1 h-6">
+<div class="flex-1 bg-tertiary border border-outline rounded-sm"></div>
+<div class="flex-1 bg-tertiary border border-outline rounded-sm"></div>
+<div class="flex-1 bg-tertiary border border-outline rounded-sm"></div>
+<div class="flex-1 bg-tertiary border border-outline rounded-sm"></div>
+<div class="flex-1 bg-tertiary border border-outline rounded-sm"></div>
+<div class="flex-1 bg-tertiary border border-outline rounded-sm"></div>
+<div class="flex-1 bg-tertiary border border-outline rounded-sm"></div>
+<div class="flex-1 bg-tertiary border border-outline rounded-sm"></div>
+<div class="flex-1 bg-tertiary border border-outline rounded-sm"></div>
+<div class="flex-1 bg-surface-container-highest border border-outline rounded-sm"></div>
+</div>
+</div>
+<!-- Posture Meter -->
+<div>
+<div class="flex justify-between items-end mb-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Posture &amp; Presence</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">8<span class="text-body-md text-on-surface-variant">/10</span></span>
+</div>
+<!-- Segmented MIDI style meter -->
+<div class="flex gap-1 h-6">
+<div class="flex-1 bg-primary-container border border-outline rounded-sm"></div>
+<div class="flex-1 bg-primary-container border border-outline rounded-sm"></div>
+<div class="flex-1 bg-primary-container border border-outline rounded-sm"></div>
+<div class="flex-1 bg-primary-container border border-outline rounded-sm"></div>
+<div class="flex-1 bg-primary-container border border-outline rounded-sm"></div>
+<div class="flex-1 bg-primary-container border border-outline rounded-sm"></div>
+<div class="flex-1 bg-primary-container border border-outline rounded-sm"></div>
+<div class="flex-1 bg-primary-container border border-outline rounded-sm"></div>
+<div class="flex-1 bg-surface-container-highest border border-outline rounded-sm"></div>
+<div class="flex-1 bg-surface-container-highest border border-outline rounded-sm"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Transcript Highlight Area -->
+<div class="bg-surface-container-lowest border-2 border-outline rounded overflow-hidden">
+<div class="bg-surface-container flex justify-between items-center p-4 border-b-2 border-outline">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined">notes</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Transcript Highlights</h3>
+</div>
+</div>
+<div class="p-stack-sm bg-surface">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">
+                                Good morning, everyone. I'm thrilled to be here today to walk you through our Q3 strategic initiatives. 
+                                <span class="bg-tertiary-fixed border border-tertiary px-1 rounded">As you can see from the initial data</span>, our core market share has expanded by 12%. 
+                                Now, moving on to the, <span class="bg-error-container border border-error px-1 rounded cursor-help relative group">um<span class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 hidden group-hover:block w-max bg-on-surface text-on-primary font-label-caps text-label-caps p-2 rounded text-xs">Filler Word Detected</span></span>, secondary phase of deployment, we anticipate...
+                            </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>
